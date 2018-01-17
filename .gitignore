@@ -1,0 +1,5 @@
+Library/
+Temp/
+*.csprog
+*.sln
+*.db
