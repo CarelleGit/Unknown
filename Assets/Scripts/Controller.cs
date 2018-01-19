@@ -5,30 +5,41 @@ using UnityEngine;
 public class Controller : MonoBehaviour
 {
     public float speed;
+    public float airSpeed;
     public Rigidbody2D rb2;
     public float jump;
-   public GameObject ground;
-
-	// Use this for initialization
-	void Start ()
+    public bool grounded;
+    public Transform groundCheck;
+    float radius = 0.2f;
+    public LayerMask WhatGround;
+    // Use this for initialization
+    void Start()
     {
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
+        rb2 = GetComponent<Rigidbody2D>();
+    }
+
+    private void FixedUpdate()
+    {
+        grounded = Physics2D.OverlapCircle(groundCheck.position, radius, WhatGround);
+    }
+    void Update()
     {
         float horizontal = Input.GetAxis("Horizontal");
 
         Vector2 move = new Vector2(horizontal, 0);
         Vector2 desiredVelocity = move * speed * Time.deltaTime;
         rb2.velocity = new Vector2(desiredVelocity.x, rb2.velocity.y);
-        if(Input.GetButtonDown("Jump"))
+
+        if (Input.GetButtonDown("Jump") && grounded == true)
         {
-            if (ground)
-            {
-                rb2.AddForce(Vector2.up * jump);
-            }
+            rb2.AddForce(Vector2.up * jump);
+            grounded = false;
         }
-	}
+        if(grounded == false)
+        {
+             desiredVelocity = move * airSpeed * Time.deltaTime;
+            rb2.velocity = new Vector2(desiredVelocity.x, rb2.velocity.y);
+        }
+        
+    }
 }

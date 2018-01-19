@@ -283,6 +283,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Controller.cs" />
+    <Compile Include="Assets\Scripts\EnemyController.cs" />
     <Compile Include="Assets\Scripts\Load.cs" />
     <Compile Include="Assets\Scripts\Quit.cs" />
   </ItemGroup>
