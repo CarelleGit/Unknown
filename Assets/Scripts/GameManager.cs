@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public GameObject level;
     public GameObject player;
     public GameObject spawner;
+    public GameObject spawner2;
     public GameObject enemy;
 
     public int enemyHealth;
@@ -41,15 +42,31 @@ public class GameManager : MonoBehaviour
 
 
             }
-  
+            for (int i = 0; i < spawner2.GetComponent<Spawner>().listOfEnemies.Count; i++)
+            {
+                if (spawner2.GetComponent<Spawner>().listOfEnemies[i] != null)
+                {
+                    Destroy(spawner2.GetComponent<Spawner>().listOfEnemies[i]);
+                    spawner2.GetComponent<Spawner>().listOfEnemies.RemoveAt(i);
+                    Debug.Log("Removed");
+                }
+
+
+            }
+
             timer += Time.deltaTime;
             if (timer >= 3)
             {
                 player.gameObject.SetActive(true);
+                player.GetComponent<Controller>().money = 0;
                 //enemy.SetActive(true);
                 spawner.GetComponent<Spawner>().enemyCount = 0;
                 spawner.gameObject.SetActive(true);
+                spawner2.GetComponent<Spawner>().enemyCount = 0;
+                spawner2.gameObject.SetActive(true);
+
                 enemy.gameObject.SetActive(true);
+
                 level.GetComponent<PlayerLevel>().exp = 0;
                 level.GetComponent<PlayerLevel>().level = 1;
                 level.GetComponent<PlayerLevel>().expLeft = 1000;

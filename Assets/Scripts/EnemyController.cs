@@ -10,7 +10,7 @@ public class EnemyController : MonoBehaviour
     public Transform player;
     public GameObject play;
     Transform myTransform;
-    public GameObject spawner;
+   // public GameObject spawner;
 
     //Attack=======================
     bool playerInRange;
@@ -20,6 +20,7 @@ public class EnemyController : MonoBehaviour
     public int health;
     public int damage;
     float timer;
+    public int moneyGiven;
 
     //==================================================================================
     // Use this for initialization
@@ -95,7 +96,11 @@ public class EnemyController : MonoBehaviour
         if (health <= 0)
         {
             expRange = (int)Random.Range(expRange, expRange * 2);
+            moneyGiven = (int)Random.Range(moneyGiven, moneyGiven * 2);
             var xp = play.GetComponent<PlayerLevel>();
+            var mon = play.GetComponent<Controller>();
+
+            mon.money += moneyGiven;
             xp.exp += expRange;
             
         }
