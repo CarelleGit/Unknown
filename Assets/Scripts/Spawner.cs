@@ -50,7 +50,6 @@ public class Spawner : MonoBehaviour
                 Destroy(listOfEnemies[i]);
                 listOfEnemies.RemoveAt(i);
                 enemyCount--; 
-                Debug.Log("Killed");
             }
 
 
