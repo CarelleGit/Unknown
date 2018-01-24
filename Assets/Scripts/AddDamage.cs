@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class AddDamage : MonoBehaviour
 {
     public PlayerLevel player;
+    public GameObject weapon;
+    public GameObject weapon2;
     public int lvNeeded;
     public Text addDamage;
     // Use this for initialization
@@ -25,10 +27,8 @@ public class AddDamage : MonoBehaviour
 
         if (player.level >= lvNeeded)
         {
-            foreach (Weapon weapon in player.GetComponentsInChildren<Weapon>())
-            {
-               weapon.damage += 10;
-            }
+            weapon2.GetComponent<Weapon>().damage += 10;
+            weapon.GetComponent<Weapon>().damage += 10;
         }
 
         if (player.level >= lvNeeded)

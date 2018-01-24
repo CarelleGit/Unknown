@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (player.GetComponent<Controller>().health <= 0)
         {
             player.GetComponent<Controller>().death();
@@ -42,7 +43,6 @@ public class GameManager : MonoBehaviour
                 {
                     Destroy(spawner.GetComponent<Spawner>().listOfEnemies[i]);
                     spawner.GetComponent<Spawner>().listOfEnemies.RemoveAt(i);
-                    Debug.Log("Removed");
                 }
 
 
@@ -53,7 +53,6 @@ public class GameManager : MonoBehaviour
                 {
                     Destroy(spawner2.GetComponent<Spawner>().listOfEnemies[i]);
                     spawner2.GetComponent<Spawner>().listOfEnemies.RemoveAt(i);
-                    Debug.Log("Removed");
                 }
 
 
