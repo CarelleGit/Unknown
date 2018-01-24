@@ -19,7 +19,7 @@ public class EnemyController : MonoBehaviour
     public int expRange;
     public int health;
     public int damage;
-    float timer;
+    float timer = 0;
     public int moneyGiven;
 
     //==================================================================================
@@ -27,8 +27,8 @@ public class EnemyController : MonoBehaviour
     void Awake()
     {
         myTransform = transform;
-        play = GameObject.FindGameObjectWithTag("Player");
-        playerHealth = play.GetComponent<Controller>();
+        play = Controller.instance.gameObject;
+        playerHealth = Controller.instance;
     }
     //==================================================================================
     private void OnCollisionEnter2D(Collision2D collision)

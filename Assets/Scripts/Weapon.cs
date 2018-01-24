@@ -21,10 +21,6 @@ public class Weapon : MonoBehaviour
     {
         // did I hit an enemy?
         // if so, deal damage!
-        
-
-        Debug.Log("Hit");
-
 
         // did I hit the enemy that I found at the beginning of the game?
         if (collision.gameObject.tag ==  "Enemy")

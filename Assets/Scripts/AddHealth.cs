@@ -27,7 +27,7 @@ public class AddHealth : MonoBehaviour
         {
             foreach (Controller control in player.GetComponents<Controller>())
             {
-                player.health += 10;
+                player.health += player.totalHealth;
                 player.money -= moneyNeeded;
             }
         }

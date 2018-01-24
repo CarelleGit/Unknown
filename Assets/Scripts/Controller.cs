@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Controller : MonoBehaviour
 {
+    public static Controller instance;
+
     public GameObject weapon;
     public GameObject weapon2;
     public GameObject panel;
@@ -24,15 +26,24 @@ public class Controller : MonoBehaviour
 
     //Other====================
     public int health;
+    public int totalHealth;
     public Slider healthBar;
     public Slider expBar;
     public Text moneyText;
     public int money;
-    float timer;
+    float timer = 0f;
    
     // Damage===================
-    bool dead;
-    bool damaged;
+    bool dead = false;
+    bool damaged = false;
+
+    private void Awake()
+    {
+        if (!instance)
+            instance = this;
+        else
+            Destroy(gameObject);
+    }
 
     //==================================================================================
     // Use this for initialization
@@ -119,6 +130,10 @@ public class Controller : MonoBehaviour
         {
             desiredVelocity = move * airSpeed * Time.deltaTime;
             rb2.velocity = new Vector2(desiredVelocity.x, rb2.velocity.y);
+        }
+        if(health >= totalHealth)
+        {
+            health = totalHealth;
         }
     }
     //==================================================================================
