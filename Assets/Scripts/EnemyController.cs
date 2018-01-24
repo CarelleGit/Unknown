@@ -33,7 +33,7 @@ public class EnemyController : MonoBehaviour
     //==================================================================================
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject == play)
+        if(collision.gameObject.tag == "Player")
         {
             playerInRange = true;
         }
@@ -41,7 +41,7 @@ public class EnemyController : MonoBehaviour
     //==================================================================================
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if(collision.gameObject == play)
+        if(collision.gameObject.tag == "Player")
         {
             playerInRange = false;
         }
