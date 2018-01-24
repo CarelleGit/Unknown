@@ -9,9 +9,9 @@ public class CameraFollow : MonoBehaviour
     void LateUpdate()
     {
         //transform.position = new Vector3(player.transform.position.x, 0f, -10f);
-        if (player.transform.position.x > -5f && player.transform.position.x < 100f)
+        if (player.transform.position.x > -5f && player.transform.position.x < 50f)
         {
-            transform.position = new Vector3(player.transform.position.x, 0f, -100f);
+            transform.position = new Vector3(player.transform.position.x, 0f, -50f);
         }
     }
 }
